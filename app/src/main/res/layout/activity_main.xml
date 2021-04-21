@@ -98,10 +98,26 @@
             android:textColor="#FFF"
             android:textSize="20sp"
             tools:ignore="MissingConstraints" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/xs_like"
+<!--        <ImageView-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@mipmap/xs_like"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
+        <TextView
+            android:id="@+id/tv_show_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:text="收藏"
+            android:drawablePadding="6dp"
+            android:drawableLeft="@mipmap/add"
+            android:background="@drawable/shape_collect_ff60af"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="background_view_height">400dp</dimen>
+    <dimen name="background_view_height">450dp</dimen>
     <dimen name="top_title_view_height">85dp</dimen>
     <dimen name="content_view_vertical_translationY">280dp</dimen>
     <dimen name="content_tablayout_view_height">40dp</dimen>

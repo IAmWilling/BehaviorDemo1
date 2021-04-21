@@ -34,7 +34,7 @@ class ContentBehavior : CoordinatorLayout.Behavior<ConstraintLayout> {
             tablayoutHeight = getDimension(R.dimen.content_tablayout_view_height).toInt()
             contentPaddingTop = getDimension(R.dimen.content_view_paddingtop).toInt()
             backgroundCoverHeight = getDimension(R.dimen.background_view_height).toInt()
-            maxTransY = transY + 200
+            maxTransY = transY + 300
         }
         animate = ValueAnimator()
         animate.duration = 500
@@ -171,6 +171,13 @@ class ContentBehavior : CoordinatorLayout.Behavior<ConstraintLayout> {
             }
 
         }
+    }
+
+    override fun blocksInteractionBelow(
+        parent: CoordinatorLayout,
+        child: ConstraintLayout
+    ): Boolean {
+        return true
     }
 
     override fun onStopNestedScroll(

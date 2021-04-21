@@ -34,7 +34,7 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout> {
             tablayoutHeight = getDimension(R.dimen.content_tablayout_view_height).toInt()
             contentPaddingTop = getDimension(R.dimen.content_view_paddingtop).toInt()
             backgroundCoverHeight = getDimension(R.dimen.background_view_height).toInt()
-            maxTransY = transY + 200
+            maxTransY = transY + 300
         }
     }
 
