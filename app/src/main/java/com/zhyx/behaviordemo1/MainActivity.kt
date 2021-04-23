@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ViewPagerAdapter1
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeUtil.setStatusBarTransparent(this, false, false)
+//        ThemeUtil.setStatusBarTransparent2(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tv_title.text = "许嵩"
