@@ -46,7 +46,7 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
             maxTransY = transY + 300
             animate.setFloatValues(transY.toFloat(), topTitleHeight.toFloat())
         }
-        animate.duration = 500
+        animate.duration = 300
         animate.addUpdateListener {
             dependencyV.translationY = it.animatedValue as Float
         }
@@ -68,10 +68,10 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
             return super.onInterceptTouchEvent(parent, child, ev)
         } else {
             //拦截
-            if(flag) {
+            if (flag) {
                 return true
-            }else {
-               return  super.onInterceptTouchEvent(parent, child, ev)
+            } else {
+                return super.onInterceptTouchEvent(parent, child, ev)
             }
 
         }
@@ -85,21 +85,30 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
         when (ev.action) {
             MotionEvent.ACTION_MOVE -> {
 
-//                    animate.cancel()
-//                    dependencyV.translationY -= (mLastY - ev.y)
-                if (mLastY - ev.y> 10f) {
-                    if(!animate.isRunning || !animate.isStarted) {
-                        animate.setFloatValues(dependencyV.translationY,topTitleHeight.toFloat())
-                        animate.start()
-                    }
+                animate.cancel()
+                val p = dependencyV.translationY - ((mLastY - ev.y))
+                if (p <= maxTransY && p >= topTitleHeight) {
+                    dependencyV.translationY -= (mLastY - ev.y)
                 }
 
-            }
-            MotionEvent.ACTION_UP-> {
 //                if (mLastY - ev.y> 10f) {
 //                    if(!animate.isRunning || !animate.isStarted) {
 //                        animate.setFloatValues(dependencyV.translationY,topTitleHeight.toFloat())
 //                        animate.start()
+//                    }
+//                }
+
+            }
+            MotionEvent.ACTION_UP -> {
+//                if (mLastY - ev.y> 10f) {
+//                    if(!animate.isRunning || !animate.isStarted) {
+                if (dependencyV.translationY >= transY && dependencyV.translationY <= maxTransY) {
+                    animate.setFloatValues(dependencyV.translationY, transY.toFloat())
+
+                } else {
+                    animate.setFloatValues(dependencyV.translationY, topTitleHeight.toFloat())
+                }
+                animate.start()
 //                    }
 //                }
             }
