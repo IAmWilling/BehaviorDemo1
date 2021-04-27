@@ -6,6 +6,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.NestedScrollingChild3
@@ -46,7 +47,8 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
             maxTransY = transY + 300
             animate.setFloatValues(transY.toFloat(), topTitleHeight.toFloat())
         }
-        animate.duration = 300
+        animate.duration = 260
+        animate.interpolator = DecelerateInterpolator()
         animate.addUpdateListener {
             dependencyV.translationY = it.animatedValue as Float
         }
@@ -84,24 +86,13 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
     ): Boolean {
         when (ev.action) {
             MotionEvent.ACTION_MOVE -> {
-
                 animate.cancel()
                 val p = dependencyV.translationY - ((mLastY - ev.y))
                 if (p <= maxTransY && p >= topTitleHeight) {
                     dependencyV.translationY -= (mLastY - ev.y)
                 }
-
-//                if (mLastY - ev.y> 10f) {
-//                    if(!animate.isRunning || !animate.isStarted) {
-//                        animate.setFloatValues(dependencyV.translationY,topTitleHeight.toFloat())
-//                        animate.start()
-//                    }
-//                }
-
             }
             MotionEvent.ACTION_UP -> {
-//                if (mLastY - ev.y> 10f) {
-//                    if(!animate.isRunning || !animate.isStarted) {
                 if (dependencyV.translationY >= transY && dependencyV.translationY <= maxTransY) {
                     animate.setFloatValues(dependencyV.translationY, transY.toFloat())
 
@@ -109,8 +100,7 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
                     animate.setFloatValues(dependencyV.translationY, topTitleHeight.toFloat())
                 }
                 animate.start()
-//                    }
-//                }
+
             }
         }
         mLastY = ev.y
@@ -154,11 +144,35 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
         } else {
             child.translationY = -backgroundCoverHeight * blurImage.alpha * 0.2f
         }
+
         return true
     }
 
     private fun logD(str: String) {
         println("BackgroundFadeBehavior ======> $str")
+    }
+
+//    override fun onStartNestedScroll(
+//        coordinatorLayout: CoordinatorLayout,
+//        child: FrameLayout,
+//        directTargetChild: View,
+//        target: View,
+//        axes: Int,
+//        type: Int
+//    ): Boolean {
+//        return axes == ViewCompat.SCROLL_AXIS_VERTICAL;
+//    }
+
+    override fun onNestedPreScroll(
+        coordinatorLayout: CoordinatorLayout,
+        child: FrameLayout,
+        target: View,
+        dx: Int,
+        dy: Int,
+        consumed: IntArray,
+        type: Int
+    ) {
+        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type)
     }
 
     override fun dispatchNestedScroll(

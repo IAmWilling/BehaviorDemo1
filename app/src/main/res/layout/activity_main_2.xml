@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhyx.behaviordemo1.meituan.MTScrollLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mt_scrolllayout"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+
+    tools:context=".MainActivity">
+
+
+        <!--        上层baner-->
+        <ImageView
+            android:id="@+id/bg_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/banner" />
+<!--        container-->
+        <FrameLayout
+
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:background="@drawable/shape_round_bg"
+            android:id="@+id/container_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationY="@dimen/translate_fold_Y">
+
+            <!--        可折叠layout-->
+            <LinearLayout
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:id="@+id/fold_container_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:id="@+id/top_container_layout"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:clipChildren="false"
+                        android:orientation="horizontal"
+                        tools:ignore="MissingConstraints">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="麦当劳麦乐送（杭州）黄龙国际中心店"
+                                android:textColor="#000"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
+                                <ImageView
+                                    android:id="@+id/pingfen"
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:src="@mipmap/star" />
+
+                                <TextView
+                                    android:id="@+id/pingfen_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:padding="0dp"
+                                    android:text="4.6"
+                                    android:textColor="#FF8C00"
+                                    android:textSize="11sp"
+                                    app:layout_constraintBottom_toBottomOf="@id/pingfen"
+                                    app:layout_constraintLeft_toRightOf="@id/pingfen"
+                                    app:layout_constraintTop_toTopOf="@id/pingfen" />
+
+                                <TextView
+                                    android:id="@+id/xiaoshou_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="月售862"
+                                    android:textColor="#8a8a8a"
+                                    android:textSize="11sp"
+                                    app:layout_constraintBottom_toBottomOf="@id/pingfen"
+                                    app:layout_constraintLeft_toRightOf="@id/pingfen_text"
+                                    app:layout_constraintTop_toTopOf="@id/pingfen" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="配送约38分钟"
+                                    android:textColor="#8a8a8a"
+                                    android:textSize="11sp"
+                                    app:layout_constraintBottom_toBottomOf="@id/pingfen"
+                                    app:layout_constraintLeft_toRightOf="@id/xiaoshou_count"
+                                    app:layout_constraintTop_toTopOf="@id/pingfen" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+
+                        <com.zhyx.behaviordemo1.meituan.MyRoundImageView
+                            android:layout_width="60dp"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="-30dp"
+                            android:elevation="20dp"
+                            android:outlineProvider="bounds"
+                            android:scaleType="centerCrop" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/round_xinren_1"
+                                android:gravity="center"
+                                android:paddingLeft="2dp"
+                                android:paddingRight="3dp"
+                                android:text="新人"
+                                android:paddingTop="1dp"
+                                android:paddingBottom="1dp"
+                                android:textColor="#fff"
+                                android:textSize="11sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/round_xinren_2"
+                                android:gravity="center"
+                                android:paddingTop="1dp"
+                                android:paddingBottom="1dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="减15"
+                                android:textColor="#FF6347"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginLeft="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/round_xinren_3"
+                            android:gravity="center"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="79减15"
+                            android:textColor="#FF6347"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:layout_marginLeft="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/round_xinren_3"
+                            android:gravity="center"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="5折起"
+                            android:textColor="#FF6347"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="11sp"
+                            android:lines="1"
+                            android:ellipsize="end"
+                            android:text="@string/desc"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/zhankai"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_navigation"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_bar_height"
+            android:paddingLeft="10dp"
+            android:paddingTop="30dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:id="@+id/back_out"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@mipmap/houtui"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+            <com.zhyx.behaviordemo1.meituan.HeaderSearchImageView
+                android:id="@+id/search_imagview"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/more"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/more"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@mipmap/more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/swiper_container_layout"
+            android:translationY="@dimen/swiper_container_transY"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:background="#fff"
+                app:tabIndicatorColor="#ff0000"
+                app:tabTextColor="#8a8a8a"
+                app:tabSelectedTextColor="#333"
+                android:layout_height="@dimen/dp_30"
+                android:layout_width="match_parent">
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="点菜"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="评论"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"/>
+                <com.google.android.material.tabs.TabItem
+                    android:text="商家"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"/>
+
+            </com.google.android.material.tabs.TabLayout>
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+
+
+
+</com.zhyx.behaviordemo1.meituan.MTScrollLayout>

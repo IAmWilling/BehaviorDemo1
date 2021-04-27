@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
@@ -37,12 +38,22 @@ class ContentBehavior : CoordinatorLayout.Behavior<ConstraintLayout> {
             maxTransY = transY + 300
         }
         animate = ValueAnimator()
-        animate.duration = 500
+        animate.duration = 260
+        animate.interpolator = DecelerateInterpolator()
         animate.addUpdateListener {
             val value = it.animatedValue as Float
             mContentView.translationY = value
         }
     }
+
+    override fun onDependentViewRemoved(
+        parent: CoordinatorLayout,
+        child: ConstraintLayout,
+        dependency: View
+    ) {
+        super.onDependentViewRemoved(parent, child, dependency)
+    }
+
 
     override fun onMeasureChild(
         parent: CoordinatorLayout,

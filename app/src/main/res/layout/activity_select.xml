@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectActivity">
+    <Button
+        android:id="@+id/nested_scrolling_activity"
+        android:text="nested_scrolling_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/behavior_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="behavior_activity"
+        app:layout_constraintTop_toBottomOf="@+id/nested_scrolling_activity"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/meituan_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="meituan_activity"
+        app:layout_constraintTop_toBottomOf="@+id/behavior_activity"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
