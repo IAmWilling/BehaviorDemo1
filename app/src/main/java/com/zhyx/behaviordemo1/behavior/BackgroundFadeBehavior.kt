@@ -56,56 +56,53 @@ class BackgroundFadeBehavior : CoordinatorLayout.Behavior<FrameLayout>, NestedSc
     }
 
 
-    override fun onInterceptTouchEvent(
-        parent: CoordinatorLayout,
-        child: FrameLayout,
-        ev: MotionEvent
-    ): Boolean {
-        var flag = false
-        if (MotionEvent.ACTION_DOWN == ev.action) {
-            mLastY = ev.y
-            flag = (ev.y >= topTitleHeight) && (ev.y < dependencyV.translationY)
-        }
-        if (dependencyV.translationY <= topTitleHeight) {
-            return super.onInterceptTouchEvent(parent, child, ev)
-        } else {
-            //拦截
-            if (flag) {
-                return true
-            } else {
-                return super.onInterceptTouchEvent(parent, child, ev)
-            }
-
-        }
-    }
-
-    override fun onTouchEvent(
-        parent: CoordinatorLayout,
-        child: FrameLayout,
-        ev: MotionEvent
-    ): Boolean {
-        when (ev.action) {
-            MotionEvent.ACTION_MOVE -> {
-                animate.cancel()
-                val p = dependencyV.translationY - ((mLastY - ev.y))
-                if (p <= maxTransY && p >= topTitleHeight) {
-                    dependencyV.translationY -= (mLastY - ev.y)
-                }
-            }
-            MotionEvent.ACTION_UP -> {
-                if (dependencyV.translationY >= transY && dependencyV.translationY <= maxTransY) {
-                    animate.setFloatValues(dependencyV.translationY, transY.toFloat())
-
-                } else {
-                    animate.setFloatValues(dependencyV.translationY, topTitleHeight.toFloat())
-                }
-                animate.start()
-
-            }
-        }
-        mLastY = ev.y
-        return true
-    }
+//    override fun onInterceptTouchEvent(
+//        parent: CoordinatorLayout,
+//        child: FrameLayout,
+//        ev: MotionEvent
+//    ): Boolean {
+//        var flag = false
+//        if (MotionEvent.ACTION_DOWN == ev.action) {
+//            mLastY = ev.y
+//            flag = (ev.y >= topTitleHeight) && (ev.y < dependencyV.translationY)
+//        }
+//        if (dependencyV.translationY <= topTitleHeight) {
+//            return super.onInterceptTouchEvent(parent, child, ev)
+//        } else {
+//            //拦截
+//            if (flag) {
+//                return true
+//            } else {
+//                return super.onInterceptTouchEvent(parent, child, ev)
+//            }
+//        }
+//    }
+//
+//    override fun onTouchEvent(
+//        parent: CoordinatorLayout,
+//        child: FrameLayout,
+//        ev: MotionEvent
+//    ): Boolean {
+//        when (ev.action) {
+//            MotionEvent.ACTION_MOVE -> {
+//                animate.cancel()
+//                val p = dependencyV.translationY - ((mLastY - ev.y))
+//                if (p <= maxTransY && p >= topTitleHeight) {
+//                    dependencyV.translationY -= (mLastY - ev.y)
+//                }
+//            }
+//            MotionEvent.ACTION_UP -> {
+//                if (dependencyV.translationY >= transY && dependencyV.translationY <= maxTransY) {
+//                    animate.setFloatValues(dependencyV.translationY, transY.toFloat())
+//                } else {
+//                    animate.setFloatValues(dependencyV.translationY, topTitleHeight.toFloat())
+//                }
+//                animate.start()
+//            }
+//        }
+//        mLastY = ev.y
+//        return true
+//    }
 
     override fun onLayoutChild(
         parent: CoordinatorLayout,
